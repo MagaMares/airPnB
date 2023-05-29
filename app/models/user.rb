@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-  # has_many :bookings
-  # has_many :planets, through: :bookings
-  # has_many :planets
+  has_many :bookings
+  has_many :rented_planets, through: :bookings, source: :planets
+  has_many :owned_planets, source: :planets
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
