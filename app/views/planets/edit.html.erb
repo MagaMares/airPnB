@@ -1,0 +1,21 @@
+<div class="container mt-5">
+  <h1>Edit Planet</h1>
+
+ <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <%= simple_form_for @planet do |f| %>
+        <%= f.input :name %>
+        <%= f.input :description %>
+        <%= f.input :address %>
+        <%= f.input :planet_type %>
+        <%= f.input :price %>
+        <%= f.submit class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+
+  <hr>
+  <%= link_to planets_path do %>
+    <i class="fa-solid fa-arrow-rotate-left"></i> Back to Planets
+  <% end %>
+</div>
