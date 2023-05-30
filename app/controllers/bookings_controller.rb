@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :find_planet, only: %i[new create]
+  before_action :find_planet, only: %i[index new create show edit destroy]
 
   def new
     @user = current_user
@@ -10,11 +10,44 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @user = current_user
     @booking.planet = @planet
+    @booking.user = @user
     if @booking.save
       redirect_to planet_path(@planet)
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def index
+    @booking = Booking.all
+    @user = current_user
+  end
+
+  def show
+    @booking = Booking.find(params(@planet))
+    @user = current_user
+  end
+
+  def edit
+    @booking = Booking.find(params[:id])
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    @user = current_user
+    @booking.planet = @planet
+    @booking.user = @user
+    if @booking.save
+      redirect_to planet_path(@planet)
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    redirect_to planet_path(@planet), status: :see_other
   end
 
   private

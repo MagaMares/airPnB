@@ -23,6 +23,6 @@
         </tbody>
       </table>
     </div>
-    <%= link_to "Delete your Planet", planet_path(@planet), data: {turbo_method: :delete, turbo_confirm: "Delete #{@planet.name}?"}, class: 'btn btn-danger' %>
-  </div>
+      <%= link_to "Book this planet", new_planet_booking_path(@planet), class: 'btn btn-primary' %>
+    </div>
 </div>
