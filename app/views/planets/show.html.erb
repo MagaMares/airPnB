@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <h1><%= @planet.name %></h1>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th scope="row">Address</th>
+            <td><%= @planet.address %></td>
+          </tr>
+          <tr>
+            <th scope="row">Description</th>
+            <td><%= @planet.description %></td>
+          </tr>
+          <tr>
+            <th scope="row">Type</th>
+            <td><%= @planet.planet_type %></td>
+          </tr>
+          <tr>
+            <th scope="row">Price</th>
+            <td><%= @planet.price %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <%= link_to "Delete your Planet", planet_path(@planet), data: {turbo_method: :delete, turbo_confirm: "Delete #{@planet.name}?"}, class: 'btn btn-danger' %>
+  </div>
+</div>
