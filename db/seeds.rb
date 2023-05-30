@@ -1,7 +1,27 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+
+
+puts "Cleaning database..."
+sleep(2)
+Planet.destroy_all
+
+require "open-uri"
+
+planets = [
+  [{ name: "0G-212-Mega Beach", description: "Cette planète vous charmera par sa mono plage d'une surface de 15 millions de m2. Vous pourrez y bronzer 29h par jour. N'oubliez pas votre crème solaire indice 10.000 car ses 2 étoiles sont super massives.", address: "10600 galaxie R27 (1ere à droite après l'étoile Vega)", type: "Sablonneuse", price: 10000 },"https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80"],
+  [{ name: "ZI-213-Volcania", description: "Cette planète vous charmera par ses 14767 volcans en activité. Cette planète est une aventure à explorer. Un vrai bonheur pour tout les pompiers intergalactiques, à qui nous réservons des réductions sur les locations à l'année. En effet, il est difficile de les éteindre en moins d'un an, les 14767 volcans.", address: "137, galaxie QZ-45-RT , Proximus Actarus (juste derrière le cygne)", type: "Volcanique", price: 10000 }, "https://images.unsplash.com/photo-1632395627732-005012dbc286?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3280&q=80"],
+  [{ name: "ZI-70-Ocean's Eleven", description: "Cette planète vous charmera par son mono océan de 15 millions de km2. Elle peut acceuillir les Kite Surfers des plus débutants aux plus expérimentés. Les vagues de l'hemisphere nord atteignent des hauteurs de 127 mètres avec un temps de reflux de 15600 minutes Alpha. C'est un paramètre important, très recherché au sein des galaxies humides. Au sud, à l'inverse, les vents nuls permettent une pratique du pédalo.", address: "2, nébuleuse du drakar noir , Oceanus Pupus (derrière la voile bleue)", type: "Oceanique", price: 15500 },"https://images.unsplash.com/photo-1632395627760-72e6eca7f9c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80"],
+  [{ name: "ZEF-656-Air Planet", description: "Cette planète vous charmera par ses vents puissants. Elle n'a pas de sol, ce qui permet une pratique longue du saut en chute libre ( 3 jours de traversée). ATTENTION, il est important de prévoir 2 véhicules spaciaux, l'un pour le départ, l'autre pour l'arrivée, car les sauteurs traversent la planète et doivent être récupérés à la sortie.", address: "Nuage de Magellan, galaxyie Ventus Parapentus (derrière la constellation du parapente)", type: "Air Planet", price: 27600 }, "https://plus.unsplash.com/premium_photo-1677186162750-87c0ce83e5c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2232&q=80"],
+  [{ name: "JIJI-36-Luxuria", description: "Cette planète vous charmera par sa luxiuriance. Ses 3 jungles d'une superficie totale de 15000 km2 abritent une faune et une flore exceptionnelle. ATTENTION certaines espèces venimeuses tombent des fougères géantes, aussi prévoyez un extracteur venimique à double insertion et alimentation solaire. La marque Aspi-venin est recommandée", address: "36 Interespace forestier de la nébuleuse du tilleul, galaxie de la tete de renard.", type: "Forestière", price: 37000 }, "https://plus.unsplash.com/premium_photo-1674478014429-ab9747743dee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2135&q=80$"],
+  [{ name: "Galak-Z36", description: "Cette planète boule de neige vous charmera par son air vivifiant, son environnement paisible et ses températures glaciales. Aucun congélateur n'est à prévoir concernant vos réserves de nourritures, stockable en plein air. L'activité principale proposée aux visiteurs est le patin à glace. 125.690km de pistes vous sont dédiées.", address: "137 piste interstallaire ZZ-67 , galaxie du traineau.", type: "Snowball", price: 45000}, "https://static01.nyt.com/images/2019/12/17/science/02TB-SNOWBALLEARTH1/02TB-SNOWBALLEARTH1-superJumbo-v2.jpg?quality=75&auto=webp"],
+  [{ name: "DUR-Asterios-ZZPP", description: "Cet astéroid conviendra parfaitement aux visiteurs en quête de solitude, de farniente. Vous n'aurez d'autre activité que la contemplation de la noirceur de l'univers, en vision directe sans distortion colorimétrique due à une atmosphère. ", address: "2600 passage du vide intergalactique , amas du trou noir ZZ-666", type: "Asteroide", price: 500}, "https://media.gq.com.mx/photos/5ea9adc7224e5d00087eb95d/16:9/w_1920,c_limit/asteroide-pasara-por-la-tierra-dicen-que-parece-cubrebocas-dos.jpg"],
+  [{ name: "Asteroid B-612", description: "Cette planète astéroide charmera les enfants terriens qui y retrouveront l'un des personnages phare de leur enfance, le petit prince. Les activités proposées sont le ramonage des petits volcans de l'asteroide ainsi que l'arrachage de baobabs qui fleurissent à sa surface. Enfin, en déplaçant leurs chaises de quelques centimètres par heure, les enfants pourront voir le soleil se coucher 44 fois par jour.", address: "37, passage galactique de l'allumeur de réverbère, constellation du mouton.", type: "Asteroide", price: 1200 }, "https://i.pinimg.com/originals/53/b3/f5/53b3f530e010733faba52dd8b9f034ed.gif"]
+]
+
+planets.each do |planet|
+  new_planet = Planet.new(planet[0])
+  file = URI.open(planet[1])
+  new_planet.photo.attach(io: file, filename: "", content_type: "image")
+  puts "created #{new_planet['name']}"
+  sleep(1)
+  new_planet.save
+end
