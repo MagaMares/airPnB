@@ -29,7 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_121939) do
     t.string "name"
     t.string "description"
     t.string "address"
-    t.string "type"
+    t.string "planet_type"
     t.integer "price"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
