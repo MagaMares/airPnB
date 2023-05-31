@@ -2,7 +2,10 @@
 
 puts "Cleaning database..."
 sleep(2)
+
+Booking.destroy_all
 Planet.destroy_all
+User.destroy_all
 
 require "open-uri"
 
