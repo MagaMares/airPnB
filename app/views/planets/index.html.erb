@@ -5,9 +5,12 @@
          <% @planets.each do |planet| %>
           <div class="col-lg-3 col-md-4 col-sm-6 col-12">
             <div class="card mb-2">
-              <div class="card-img-top"><%= (image_tag planet.photo, width: 400, height: 300, crop: :scale) %></div>              
+              <%= link_to planet_path(planet) do  %>
+              <div class="card-img-top"><%= (image_tag planet.photo, width: 400, height: 300, crop: :scale) %></div>
+              <% end  %>
                 <div class="card-body">
-                  <span class="badge bg-primary mb-2"><%= planet.price %> </span>
+                  <span class="badge bg-primary mb-2"><%= planet.price %>$</span>
+
                   <h5 class="card-title"><%= planet.name %></h5>
                </div>
             </div>
