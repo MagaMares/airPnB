@@ -3,15 +3,19 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: fixed;
-  height: 100px;
+  position: sticky;
+  bottom: 0;
+  height: 40px;
   padding: 0px 50px;
   color: rgba(0,0,0,0.3);
+  padding: 40px 40px 0 40px;
 }
+
 .footer-links {
   display: flex;
   align-items: center;
 }
+
 .footer-links a {
   color: black;
   opacity: 0.15;
