@@ -5,7 +5,9 @@ class PlanetsController < ApplicationController
   end
 
   def index
+    @user = current_user
     @planets = Planet.all
+    @users = User.all
   end
 
   def show
