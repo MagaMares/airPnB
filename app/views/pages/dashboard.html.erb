@@ -1,20 +1,36 @@
 <h1>Dashboard</h1>
 
-<div class="cards">
+<h2>My bookings</h2>
+
+<div class="row d-flex mt-5 justify-center">
   <% @bookings.each do |booking| %>
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))">
-    <li><%= booking.planet.name%></li>
-    <li><%= booking.rental_start %></li>
-    <li><%= booking.rental_end %></li>
-    <%# <li><%= booking.planet.url %></li>
+    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+      <div class="card mb-2">
+        <div><%= (image_tag booking.planet.photo, width: 400, height: 300, crop: :scale) %></div>
+          <div class="card-body">
+            <h3 class="card-title"><%= booking.planet.name%></h3>
+            <h5 class="card-title"><%= booking.rental_start %></h5>
+            <h5 class="card-title"><%= booking.rental_end %></h5>
+          </div>
     <%= link_to "Delete your Booking", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-danger' %></li>
+      </div>
+    </div>
   <% end %>
 </div>
 
-<ul>
+<h2>My booked planets</h2>
+
+<div class="row d-flex mt-5 justify-center">
   <% @booked_planets.each do |booked_planet| %>
-    <li><%= booked_planet.planet.name%></li>
-     <li><%= booked_planet.rental_start %></li>
-    <li><%= booked_planet.rental_end %></li>
+    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+      <div class="card mb-2">
+        <div><%= (image_tag booking.planet.photo, width: 400, height: 300, crop: :scale) %></div>
+          <div class="card-body">
+            <h3 class="card-title"><%= booked_planet.planet.name%></h3>
+            <h5 class="card-title"><%= booked_planet.rental_start %></h5>
+            <h5 class="card-title"><%= booked_planet.rental_end %></h5>
+          </div>
+      </div>
+    </div>
   <% end %>
- </ul>
+</div>
