@@ -3,6 +3,7 @@
 puts "Cleaning database..."
 sleep(2)
 Planet.destroy_all
+User.destroy_all
 
 require "open-uri"
 
