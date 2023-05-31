@@ -1,0 +1,20 @@
+<h1>Dashboard</h1>
+
+<div class="cards">
+  <% @bookings.each do |booking| %>
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))">
+    <li><%= booking.planet.name%></li>
+    <li><%= booking.rental_start %></li>
+    <li><%= booking.rental_end %></li>
+    <%# <li><%= booking.planet.url %></li>
+    <%= link_to "Delete your Booking", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-danger' %></li>
+  <% end %>
+</div>
+
+<ul>
+  <% @booked_planets.each do |booked_planet| %>
+    <li><%= booked_planet.planet.name%></li>
+     <li><%= booked_planet.rental_start %></li>
+    <li><%= booked_planet.rental_end %></li>
+  <% end %>
+ </ul>
