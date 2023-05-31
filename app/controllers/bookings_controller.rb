@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :find_planet, only: %i[index new create show edit destroy]
+  before_action :find_planet, only: %i[index new create show edit]
 
   def new
     @user = current_user
@@ -47,7 +47,7 @@ class BookingsController < ApplicationController
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy
-    redirect_to planet_path(@planet), status: :see_other
+    redirect_to dashboard_path, status: :see_other
   end
 
   private
