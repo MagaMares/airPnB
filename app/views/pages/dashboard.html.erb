@@ -20,22 +20,6 @@
   <% end %>
 </div>
 
-<h2>Mes planètes</h2>
-
-<div class="row d-flex mt-5 justify-center">
-  <% @user.planets.each do |planet| %>
-    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-      <div class="card mb-2">
-        <div><%= image_tag planet.photo, width: 400, height: 300, crop: :scale %></div>
-          <div class="card-body">
-            <h3 class="card-title"><%= planet.name %></h3>
-
-          </div>
-      </div>
-    </div>
-  <% end %>
-</div>
-
 <h2>Mes planètes louées</h2>
 
 <div class="row d-flex mt-5 justify-center">
