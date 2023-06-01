@@ -7,7 +7,7 @@
 
 <div class="row">
   <% @planets.each do |planet| %>
-     <% if @user != planet.user %>
+     <%# if @user != planet.user %>
       <div class="col-lg-3 col-md-4 col-sm-6 col-12">
         <div class="card mb-2">
           <%= link_to planet_path(planet) do  %>
@@ -21,7 +21,7 @@
           </div>
         </div>
       </div>
-    <% end %>
+    <%# end %>
   <% end %>
   <%= link_to "Add a new Planet", new_planet_path, class: 'btn btn-primary custom-button text-center'%>
 </div>
