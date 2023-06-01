@@ -11,7 +11,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
+            <%= link_to "Loue une planète", new_planet_path, class: "nav-link"%>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "Accueil", root_path, class: "nav-link"%>
           </li>
           <li class="nav-item dropdown">
             <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://www.pngkit.com/png/detail/290-2908492_jupiter-planet-jupiter-planet-white-background.png" />
