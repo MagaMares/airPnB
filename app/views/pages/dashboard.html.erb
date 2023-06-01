@@ -14,7 +14,8 @@
             <h5 class="card-title"><%= booking.rental_start %></h5>
             <h5 class="card-title"><%= booking.rental_end %></h5>
           </div>
-    <%= link_to "Supprimer votre réservation", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Etes-vous sûr?"}, class: 'btn btn-danger' %></li>
+    <%= link_to "Modifier votre réservation", edit_booking_path(booking),class: 'btn btn-primary' %>
+    <%= link_to "Supprimer votre réservation", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-danger' %></li>
       </div>
     </div>
   <% end %>
