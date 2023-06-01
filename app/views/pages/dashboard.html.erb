@@ -1,8 +1,8 @@
 <div class="container dashboard-container">
-    <h1>Dashboard</h1>
+    <h1>Mon AirPnB</h1>
 
   <div class="container bookings">
-    <h2>My bookings</h2>
+    <h2>Mes réservations</h2>
 
     <div class="row">
 
@@ -17,16 +17,16 @@
                 <h5 class="card-title"><%= booking.rental_start %></h5>
                 <h5 class="card-title"><%= booking.rental_end %></h5>
               </div>
-        <%= link_to "☄️Delete your Booking☄️", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-danger booking-delete' %></li>
+        <%= link_to "Modifier votre réservation", edit_booking_path(booking),class: 'btn btn-primary' %>   
+        <%= link_to "☄️Supprimer votre réservation☄️", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-danger booking-delete' %></li>
           </div>
         </div>
       <% end %>
-
     </div>
   </div>
 
   <div class="container bookings">
-  <h2>My booked planets</h2>
+  <h2>Mes planètes</h2>
 
   <div class="row d-flex mt-5 justify-center">
     <% @booked_planets.each do |booked_planet| %>
@@ -39,6 +39,7 @@
               <h5 class="card-title"><%= booked_planet.rental_end %></h5>
             </div>
         </div>
+
       </div>
     <% end %>
   </div>
