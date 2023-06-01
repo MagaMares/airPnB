@@ -35,6 +35,7 @@
 
   <div data-controller="toggle" class="mt-5">
     <button data-action="click->toggle#fire" class="btn btn-outline-primary">Book This Planet</button>
+
     <div data-toggle-target="togglableElement" class="d-none">
       <p><%= simple_form_for [@planet, @booking] do |f| %>
         <div class="form-inputs">
@@ -42,7 +43,8 @@
           <%= f.input :rental_end, input_html: {data: { controller: "datepicker" } }, as: :string %>
         </div>
         <%= f.submit "Submit booking", class: "btn btn-primary" %>
-      <% end %></p>
+      <% end %>
     </div>
+
   </div>
 </div>
