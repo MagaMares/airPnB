@@ -1,9 +1,8 @@
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-      <h1>Create a new planet</h1>
-      <%= simple_form_for @planet do |f| %>
+<div class="row form-romano">
+  <div class="mx-auto col-10 col-md-8 col-lg-6">
+    <h1>Create a new planet</h1>
+    <%= simple_form_for @planet do |f| %>
+      <div class="form-inputs">
         <%= f.input :name %>
         <%= f.input :description %>
         <%= f.input :address %>
@@ -11,7 +10,6 @@
         <%= f.input :price %>
         <%= f.input :photo, as: :file %>
         <%= f.submit class: 'btn btn-primary' %>
-      <% end %>
-    </div>
+    <% end %>
   </div>
 </div>

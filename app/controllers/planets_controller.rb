@@ -6,12 +6,17 @@ class PlanetsController < ApplicationController
 
   def index
     @user = current_user
-    @planets = Planet.all
     @users = User.all
+    if params[:query].present?
+      @planets = Planet.where("name ILIKE ?", "%#{params[:query]}%")
+    else
+      @planets = Planet.all
+    end
   end
 
   def show
     @planet = Planet.find(params[:id])
+    @booking = Booking.new
   end
 
   def create
