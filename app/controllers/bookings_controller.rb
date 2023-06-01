@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :find_planet, only: %i[index new create show edit]
+  before_action :find_planet, only: %i[index new create show]
 
   def new
     @user = current_user
@@ -34,14 +34,8 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
-    @user = current_user
-    @booking.planet = @planet
-    @booking.user = @user
-    if @booking.save
-      redirect_to planet_path(@planet)
-    else
-      render :new, status: :unprocessable_entity
-    end
+    @booking.update(booking_params)
+    redirect_to dashboard_path
   end
 
   def destroy
