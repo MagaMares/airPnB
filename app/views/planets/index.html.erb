@@ -4,7 +4,19 @@
     width: fit-content;
   }
 </style>
+
 <div class="container">
+  
+  <%= form_with url: planets_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find a Planet"
+    %>
+  
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+   <% end %>
+
   <div class="row">
     <% @planets.each do |planet| %>
       <% if @user != planet.user %>
@@ -15,14 +27,13 @@
                 <%= image_tag planet.photo, style: "object-fit: cover; width: 100%; height: 100%;" %>
               </div>
             <% end %>
-            <div class="card-body">
-              <span class="badge bg-primary mb-2"><%= planet.price %>$</span>
-              <h5 class="card-title"><%= planet.name %></h5>
-            </div>
           </div>
-        </div>
-      <% end %>
+          <div class="card-body">
+            <span class="badge bg-primary mb-2"><%= planet.price %>$</span>
+            <h5 class="card-title"><%= planet.name %></h5>
+          </div>
+          </div>
     <% end %>
   </div>
-    <%= link_to "Add a new Planet", new_planet_path, class: 'btn btn-primary custom-button text-center'%>
+  <%= link_to "Add a new Planet", new_planet_path, class: 'btn btn-primary custom-button text-center'%>
 </div>

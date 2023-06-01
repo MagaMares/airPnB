@@ -1,4 +1,5 @@
 <div class="container">
+  
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1">
         <h1><%= @planet.name %></h1>
@@ -27,6 +28,16 @@
         </div>
         <%= link_to "Book this planet", new_planet_booking_path(@planet), class: 'btn btn-primary' %>
       </div>
+    </div>
+
+  <div data-controller="toggle" class="mt-5">
+    <button data-action="click->toggle#fire" class="btn btn-outline-primary">Book This Planet</button>
+    <div data-toggle-target="togglableElement" class="d-none">
+      <p><%= simple_form_for [@planet, @booking] do |f| %>
+        <%= f.input :rental_start, input_html: {data: { controller: "datepicker" } }, as: :string %>
+        <%= f.input :rental_end, input_html: {data: { controller: "datepicker" } }, as: :string %>
+        <%= f.submit "Submit booking", class: "btn btn-primary" %>
+      <% end %></p>
     </div>
   </div>
 </div>
