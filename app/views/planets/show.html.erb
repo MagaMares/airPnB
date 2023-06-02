@@ -1,8 +1,8 @@
 <div class="container show-container">
 
-  <div class="row">
+  <div class="row" >
     <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-        <h1><%= @planet.name %></h1>
+        <h1 data-controller="typed" data-typed-sentences-value="<%= [@planet.name].to_json %>"></h1>
         <table class="table table-bordered">
           <tbody>
             <tr>
