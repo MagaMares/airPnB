@@ -9,7 +9,7 @@ User.destroy_all
 
 require "open-uri"
 
-user = User.new(first_name: "Romano", last_name: "Caillardo", email: "romanodelpiano@yahoo.fr", password: "azerty")
+user = User.new(first_name: "Romano", last_name: "Caillardo", email: "romanodepiano@yahoo.fr", password: "azerty")
 puts "created #{user['first_name']}"
 sleep(1)
 user.save!
