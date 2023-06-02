@@ -1,12 +1,12 @@
 <div class="row form-romano">
   <div class="mx-auto col-10 col-md-8 col-lg-6">
-    <h1>New Booking</h1>
+    <h1>Modifier ma réservation</h1>
     <p><%= simple_form_for @booking do |f| %>
       <div class="form-inputs">
-        <%= f.input :rental_start, input_html: {data: { controller: "datepicker" } }, as: :string %>
-        <%= f.input :rental_end, input_html: {data: { controller: "datepicker" } }, as: :string %>
+        <%= f.input :rental_start, input_html: {data: { controller: "datepicker" } }, as: :string, label: "date d'arrivée" %>
+        <%= f.input :rental_end, input_html: {data: { controller: "datepicker" } }, as: :string, label: "date de départ" %>
       </div>
-        <%= f.submit "Submit booking", class: "btn btn-primary" %>
+        <%= f.submit "Enregistrer ma réservation", class: "btn btn-primary" %>
     <% end %></p>
   </div>
 </div>
