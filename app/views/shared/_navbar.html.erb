@@ -12,15 +12,19 @@
       <ul class="navbar-nav me-auto">
           <li class="nav-item active">
             <%= link_to "Mettre ma planète sur airPnB", new_planet_path, class: "nav-link"%>
-          </li>
+           </li>
           <li class="nav-item active">
             <%= link_to "Accueil", root_path, class: "nav-link"%>
           </li>
           <li class="nav-item dropdown">
             <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://www.pngkit.com/png/detail/290-2908492_jupiter-planet-jupiter-planet-white-background.png" />
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-             <%= link_to "Login", new_user_session_path, class: "dropdown-item" %>
-             <%= link_to "Logout", destroy_user_session_path, class: "dropdown-item", data: {turbo_method:"delete"} %>
+              <%= link_to "Mon AirPnB", dashboard_path(@dashboard), class: "dropdown-item" %>
+              <% if user_signed_in? %>
+                <%= link_to "Se déconnecter", destroy_user_session_path, class: "dropdown-item", data: {turbo_method:"delete"} %>
+              <% else %>
+                <%= link_to "Se connecter", new_user_session_path, class: "dropdown-item" %>
+              <% end %>
             </div>
           </li>
           <!--li class="nav-item"-->

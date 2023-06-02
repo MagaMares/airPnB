@@ -11,7 +11,7 @@
     <%= text_field_tag :query,
       params[:query],
       class: "form-control",
-      placeholder: "Find a Planet"
+      placeholder: "Trouve une planète"
     %>
 
     <%= submit_tag "Search", class: "btn btn-primary" %>
@@ -23,7 +23,7 @@
           <div class="card mb-2">
             <%= link_to planet_path(planet) do  %>
               <div class="card-img-top" style="width: 100%; height: 350px;">
-                <%= image_tag planet.photo, style: "object-fit: cover; width: 100%; height: 100%;" %>
+                <%= cl_image_tag planet.photo.key, style: "object-fit: cover; width: 100%; height: 100%;" %>
               </div>
             <% end %>
           </div>
@@ -34,5 +34,4 @@
           </div>
     <% end %>
   </div>
-  <%= link_to "Add a new Planet", new_planet_path, class: 'btn btn-primary custom-button text-center'%>
 </div>
