@@ -17,7 +17,10 @@
             <%= link_to "Accueil", root_path, class: "nav-link"%>
           </li>
           <li class="nav-item dropdown">
-            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://www.pngkit.com/png/detail/290-2908492_jupiter-planet-jupiter-planet-white-background.png" />
+          <%if user_signed_in? %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, aria: { haspopup: true, expanded: false } %>
+          <% end %>
+            <!--img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://www.pngkit.com/png/detail/290-2908492_jupiter-planet-jupiter-planet-white-background.png" /-->
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Mon AirPnB", dashboard_path(@dashboard), class: "dropdown-item" %>
               <% if user_signed_in? %>
