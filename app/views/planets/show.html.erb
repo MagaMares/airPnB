@@ -1,49 +1,53 @@
 <div class="container show-container">
 
-  <div class="row" >
+  <div class="row align-items-center justify-content-center" >
     <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-        <h1 data-controller="typed" data-typed-sentences-value="<%= [@planet.name].to_json %>"></h1>
-        <table class="table table-bordered">
-          <tbody>
-            <tr>
-              <th scope="row">🏠</th>
-              <td><%= @planet.address %></td>
-            </tr>
-            <tr>
-              <th scope="row">🪐</th>
-              <td><%= @planet.description %></td>
-            </tr>
-            <tr>
-              <th scope="row">🌋</th>
-              <td><%= @planet.planet_type %></td>
-            </tr>
-            <tr>
-              <th scope="row">💰</th>
-              <td><%= @planet.price %></td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="planet-photo">
+      <h1 data-controller="typed" data-typed-sentences-value="<%= [@planet.name].to_json %>"></h1>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th scope="row">🏠</th>
+            <td><%= @planet.address %></td>
+          </tr>
+          <tr>
+            <th scope="row">🪐</th>
+            <td><%= @planet.description %></td>
+          </tr>
+          <tr>
+            <th scope="row">🌋</th>
+            <td><%= @planet.planet_type %></td>
+          </tr>
+          <tr>
+            <th scope="row">💰</th>
+            <td><%= @planet.price %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+      <div class="d-flex col-xs-12 col-sm-10 col-sm-offset-1 justify-content-between align-items-center">
+        <div class="planet-photo d-flex flex-column justify-center">
           <%= cl_image_tag @planet.photo.key, height: 300, crop: :scale %>
-        <% if current_user == @planet.user %>
-          <%= link_to "Supprimer", planets_path, data: {turbo_method: :delete, turbo_confirm: "Vous êtes sûr?"}, class: 'btn btn-danger'  %>
-          <%= link_to "Mettre à jour", edit_planet_path, class: 'btn btn-info' %>
-        <% end %>
+          <% if current_user == @planet.user %>
+            <%= link_to "Mettre à jour", edit_planet_path, class: 'btn btn-primary' %>
+            <%= link_to "☄️Supprimer☄️", planets_path, data: {turbo_method: :delete, turbo_confirm: "Vous êtes sûr?"}, class: 'btn btn-danger booking-delete' %>
+          <% end %>
+        </div>
+        <div data-controller="toggle" class="mx-5">
+          <button data-action="click->toggle#fire" class="btn btn-outline-primary">Loue cette planète</button>
+          <div data-toggle-target="togglableElement" class="d-none">
+            <%= simple_form_for [@planet, @booking] do |f| %>
+            <div class="form-inputs">
+              <%= f.input :rental_start, label: "Début de location", input_html: {data: { controller: "datepicker" } }, as: :string %>
+              <%= f.input :rental_end, label: "Fin de location",  input_html: {data: { controller: "datepicker" } }, as: :string %>
+            </div>
+            <%= f.submit "Valider réservation", class: "btn btn-primary" %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
+  </div>
 
-  <div data-controller="toggle" class="mt-5">
-    <button data-action="click->toggle#fire" class="btn btn-outline-primary">Loue cette planète</button>
-    <div data-toggle-target="togglableElement" class="d-none">
-      <%= simple_form_for [@planet, @booking] do |f| %>
-      <div class="form-inputs">
-        <%= f.input :rental_start, label: "Début de location", input_html: {data: { controller: "datepicker" } }, as: :string %>
-        <%= f.input :rental_end, label: "Fin de location",  input_html: {data: { controller: "datepicker" } }, as: :string %>
-      </div>
-      <%= f.submit "Valider réservation", class: "btn btn-primary" %>
-      <% end %>
-    </div>
 
   </div>
 </div>
