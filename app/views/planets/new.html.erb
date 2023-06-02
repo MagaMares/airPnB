@@ -1,15 +1,15 @@
 <div class="row form-romano">
   <div class="mx-auto col-10 col-md-8 col-lg-6">
-    <h1>Create a new planet</h1>
+    <h1>Décris la planète</h1>
     <%= simple_form_for @planet do |f| %>
       <div class="form-inputs">
-        <%= f.input :name %>
-        <%= f.input :description %>
-        <%= f.input :address %>
-        <%= f.input :planet_type %>
-        <%= f.input :price %>
+        <%= f.input :name, label: 'Nom' %>
+        <%= f.input :description, label: 'Description' %>
+        <%= f.input :address, label: 'Adresse' %>
+        <%= f.input :planet_type, label: 'Type de planète' %>
+        <%= f.input :price, label: 'Prix' %>
         <%= f.input :photo, as: :file %>
-        <%= f.submit class: 'btn btn-primary' %>
+        <%= f.submit "Valider", class: 'btn btn-primary' %>
     <% end %>
   </div>
 </div>

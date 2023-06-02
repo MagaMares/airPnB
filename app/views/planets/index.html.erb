@@ -11,7 +11,7 @@
     <%= text_field_tag :query,
       params[:query],
       class: "form-control",
-      placeholder: "Find a Planet"
+      placeholder: "Trouve une planète"
     %>
 
     <%= submit_tag "Search", class: "btn btn-primary" %>
@@ -34,5 +34,4 @@
           </div>
     <% end %>
   </div>
-  <%= link_to "Add a new Planet", new_planet_path, class: 'btn btn-primary custom-button text-center'%>
 </div>

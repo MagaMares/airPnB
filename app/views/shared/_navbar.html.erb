@@ -24,9 +24,9 @@
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Mon AirPnB", dashboard_path(@dashboard), class: "dropdown-item" %>
               <% if user_signed_in? %>
-                <%= link_to "Logout", destroy_user_session_path, class: "dropdown-item", data: {turbo_method:"delete"} %>
+                <%= link_to "Se déconnecter", destroy_user_session_path, class: "dropdown-item", data: {turbo_method:"delete"} %>
               <% else %>
-                <%= link_to "Login", new_user_session_path, class: "dropdown-item" %>
+                <%= link_to "Se connecter", new_user_session_path, class: "dropdown-item" %>
               <% end %>
             </div>
           </li>
