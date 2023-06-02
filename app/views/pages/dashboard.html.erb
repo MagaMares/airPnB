@@ -10,11 +10,11 @@
             <div class="card-img-top" style="width: 100%; height: 350px;">
               <%= cl_image_tag booking.planet.photo.key, style: "object-fit: cover; width: 100%; height: 100%;" %>
             </div>
-              <div class="card-body dashboard-card">
-                <h3 class="card-title"><%= booking.planet.name%></h3>
-                <h5 class="card-title"><%= booking.rental_start %></h5>
-                <h5 class="card-title"><%= booking.rental_end %></h5>
-              </div>
+            <div class="card-body dashboard-card">
+              <h3 class="card-title"><%= booking.planet.name%></h3>
+              <h5 class="card-title"><%= booking.rental_start %></h5>
+              <h5 class="card-title"><%= booking.rental_end %></h5>
+            </div>
             <%= link_to "Modifier votre réservation", edit_booking_path(booking),class: 'btn btn-primary' %>
             <%= link_to "☄️Supprimer votre réservation☄️", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-danger booking-delete' %></li>
           </div>
@@ -25,21 +25,23 @@
 
   <div class="container bookings">
     <h2>Mes planètes louées</h2>
-    <div class="row">
-      <% @booked_planets.each do |booked_planet| %>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-          <div class="card mb-2">
-            <div class="card-img-top" style="width: 100%; height: 350px;">
-              <%= cl_image_tag booked_planet.planet.photo.key, style: "object-fit: cover; width: 100%; height: 100%;" %>
-            </div>
-            <div class="card-body dashboard-card">
-              <h3 class="card-title"><%= booked_planet.planet.name%></h3>
-              <h5 class="card-title"><%= booked_planet.rental_start %></h5>
-              <h5 class="card-title"><%= booked_planet.rental_end %></h5>
+      <div class="row">
+        <% @booked_planets.each do |booked_planet| %>
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <div class="card mb-2">
+              <div class="card-img-top" style="width: 100%; height: 350px;">
+                <%= cl_image_tag booked_planet.planet.photo.key, style: "object-fit: cover; width: 100%; height: 100%;" %>
+              </div>
+              <div class="card-body dashboard-card">
+                <h3 class="card-title"><%= booked_planet.planet.name%></h3>
+                <h5 class="card-title"><%= booked_planet.rental_start %></h5>
+                <h5 class="card-title"><%= booked_planet.rental_end %></h5>
+              </div>
+              <%#= link_to "Accepter la réservation", dashboard_path(dashboard),class: 'btn btn-primary' %>
+              <%#= link_to "☄️Refuser la réservation☄️", dashboard_path(dashboard), class: 'btn btn-danger booking-delete' %></li>
             </div>
           </div>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
   </div>
 </div>
