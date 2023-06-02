@@ -16,6 +16,11 @@
           <li class="nav-item active">
             <%= link_to "Accueil", root_path, class: "nav-link"%>
           </li>
+          <% if !user_signed_in? %>
+            <li class="nav-item active">
+              <%= link_to "Login", user_session_path, class: "nav-link"%>
+            </li>
+          <% end %>
           <li class="nav-item dropdown">
 
           <% if user_signed_in? %>
