@@ -24,7 +24,7 @@
           </tbody>
         </table>
         <div class="planet-photo">
-          <%= cl_image_tag @planet.photo.key, width: 400, height: 300, crop: :scale %>
+          <%= cl_image_tag @planet.photo.key, height: 300, crop: :scale %>
         <% if current_user == @planet.user %>
           <%= link_to "Supprimer", planets_path, data: {turbo_method: :delete, turbo_confirm: "Vous êtes sûr?"}, class: 'btn btn-danger'  %>
           <%= link_to "Mettre à jour", edit_planet_path, class: 'btn btn-info' %>
@@ -36,13 +36,13 @@
   <div data-controller="toggle" class="mt-5">
     <button data-action="click->toggle#fire" class="btn btn-outline-primary">Loue cette planète</button>
     <div data-toggle-target="togglableElement" class="d-none">
-      <p><%= simple_form_for [@planet, @booking] do |f| %>
-        <div class="form-inputs">
-          <%= f.input :rental_start, label: "Début de location", input_html: {data: { controller: "datepicker" } }, as: :string %>
-          <%= f.input :rental_end, label: "Fin de location",  input_html: {data: { controller: "datepicker" } }, as: :string %>
-        </div>
-        <%= f.submit "Valider réservation", class: "btn btn-primary" %>
-      <% end %></p>
+      <%= simple_form_for [@planet, @booking] do |f| %>
+      <div class="form-inputs">
+        <%= f.input :rental_start, label: "Début de location", input_html: {data: { controller: "datepicker" } }, as: :string %>
+        <%= f.input :rental_end, label: "Fin de location",  input_html: {data: { controller: "datepicker" } }, as: :string %>
+      </div>
+      <%= f.submit "Valider réservation", class: "btn btn-primary" %>
+      <% end %>
     </div>
 
   </div>
