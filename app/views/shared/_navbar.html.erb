@@ -16,9 +16,19 @@
           <li class="nav-item active">
             <%= link_to "Accueil", root_path, class: "nav-link"%>
           </li>
+          <% if !user_signed_in? %>
+            <li class="nav-item active">
+              <%= link_to "Login", user_session_path, class: "nav-link"%>
+            </li>
+          <% end %>
           <li class="nav-item dropdown">
-          <%if user_signed_in? %>
-            <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, aria: { haspopup: true, expanded: false } %>
+
+          <% if user_signed_in? %>
+            <%if current_user.photo.attached? %>
+              <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, aria: { haspopup: true, expanded: false } %>
+            <% else %>
+              <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://www.pngkit.com/png/detail/290-2908492_jupiter-planet-jupiter-planet-white-background.png" />
+            <% end %>
           <% end %>
             <!--img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://www.pngkit.com/png/detail/290-2908492_jupiter-planet-jupiter-planet-white-background.png" /-->
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
